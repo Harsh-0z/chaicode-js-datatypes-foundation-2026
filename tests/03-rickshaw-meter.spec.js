@@ -1,4 +1,10 @@
-import { parseFare, roundFare, calculateSurge, findCheapestAndCostliest, getDistanceDifference } from '../src/03-rickshaw-meter.js';
+import {
+  parseFare,
+  roundFare,
+  calculateSurge,
+  findCheapestAndCostliest,
+  getDistanceDifference,
+} from '../src/03-rickshaw-meter.js';
 
 describe('03 - Auto Rickshaw Fare Calculator: Number & Math (8 pts)', () => {
   describe('parseFare', () => {
@@ -86,19 +92,31 @@ describe('03 - Auto Rickshaw Fare Calculator: Number & Math (8 pts)', () => {
 
   describe('findCheapestAndCostliest', () => {
     test('finds min and max from multiple fares', () => {
-      expect(findCheapestAndCostliest(150, 80, 200, 120)).toEqual({ cheapest: 80, costliest: 200 });
+      expect(findCheapestAndCostliest(150, 80, 200, 120)).toEqual({
+        cheapest: 80,
+        costliest: 200,
+      });
     });
 
     test('works with two fares', () => {
-      expect(findCheapestAndCostliest(50, 300)).toEqual({ cheapest: 50, costliest: 300 });
+      expect(findCheapestAndCostliest(50, 300)).toEqual({
+        cheapest: 50,
+        costliest: 300,
+      });
     });
 
     test('works when cheapest and costliest are same', () => {
-      expect(findCheapestAndCostliest(100)).toEqual({ cheapest: 100, costliest: 100 });
+      expect(findCheapestAndCostliest(100)).toEqual({
+        cheapest: 100,
+        costliest: 100,
+      });
     });
 
     test('filters out non-number values', () => {
-      expect(findCheapestAndCostliest(100, 'abc', null, 200)).toEqual({ cheapest: 100, costliest: 200 });
+      expect(findCheapestAndCostliest(100, 'abc', null, 200)).toEqual({
+        cheapest: 100,
+        costliest: 200,
+      });
     });
 
     test('returns null when no valid numbers', () => {
