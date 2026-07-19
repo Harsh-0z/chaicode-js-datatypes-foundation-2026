@@ -52,20 +52,74 @@
  */
 export function getItemNames(items) {
   // Your code here
+
+  if (Array.isArray(items) === false || items === null || items.length === 0) {
+    return [];
+  }
+  let result = items.map((i) => i.name);
+
+  return result;
 }
 
 export function getAffordableItems(items, maxPrice) {
   // Your code here
+  if (
+    Array.isArray(items) === false ||
+    items === null ||
+    items.length === 0 ||
+    typeof maxPrice !== 'number'
+  ) {
+    return [];
+  }
+
+  const result = items.filter((i) => i.price <= maxPrice);
+
+  return result;
 }
 
 export function calculateTotal(items) {
   // Your code here
+
+  if (Array.isArray(items) === false || items === null || items.length === 0) {
+    return 0;
+  }
+
+  const result = items.reduce((totalSum, item) => {
+    let itemTotal = item.qty * item.price;
+
+    return totalSum + itemTotal;
+  }, 0);
+
+  return result;
 }
 
 export function sortByPrice(items, ascending) {
   // Your code here
+
+  if (Array.isArray(items) === false || items === null || items.length === 0) {
+    return [];
+  }
+
+  const productsCopy = [...items];
+
+  return productsCopy.sort((a, b) => {
+    if (ascending) {
+      return a.price - b.price; // low to high ascending order
+    } else {
+      return b.price - a.price;
+    }
+  });
 }
 
 export function formatBill(items) {
   // Your code here
+  if (Array.isArray(items) === false || items === null || items.length === 0) {
+    return '';
+  }
+
+  const result = items
+    .map((i) => `${i.name} x ${i.qty} = Rs.${i.qty * i.price}`)
+    .join('\n');
+
+  return result;
 }
